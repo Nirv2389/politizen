@@ -1,0 +1,22 @@
+#container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.child {
+  height: 200px;
+  flex: 1;
+}
+
+#child1 {
+  background-color: red;
+}
+
+#child2 {
+  background-color: white;
+}
+
+#child3 {
+  background-color: blue;
+}
