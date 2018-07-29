@@ -24,7 +24,9 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Design
 
-The design of this project is generated via the implementation of [Angular Material](https://material.angular.io/). For information on the latest Material releases, bugfixes, breaking changes, notes, and planned components; see the the [github] repository(https://github.com/angular/material2). For [Material Icons] please visit (https://material.io/tools/icons/?style=baseline).
+The design of this project is generated via the implementation of [Angular Material](https://material.angular.io/). For information on the latest Angular Material releases, bugfixes, breaking changes, notes, and planned components; see visit the [Material2](https://github.com/angular/material2) repository.
+
+For information on the Material Icons, please visit the [Material Icons](https://material.io/tools/icons/?style=baseline) site.
 
 ## Further help
 
