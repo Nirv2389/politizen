@@ -4,7 +4,7 @@
   </mat-tab>
   <mat-tab label="All Representatives">
     <section class="representative" fxLayout fxLayoutAlign="center">
-      <mat-card fxFlex.xs="100%" fxFlex="400px">
+      <mat-card fxFlex.xs="70%" fxFlex="400px">
         <img mat-card-image
           src="https://material.angular.io/assets/img/examples/shiba2.jpg"
           alt="Photo of a Shiba Inu">
@@ -12,21 +12,23 @@
             <p>Shiba Hiroue Inu</p>
             <p>Senator</p>
           </mat-card-content>
-        <mat-card-footer class="representative-actions"
-          fxLayoutGap="50px" fxLayoutAlign="center">
-          <mat-card-actions>
+        <mat-card-footer fxLayout fxLayoutAlign="center">
+          <mat-card-actions
+            fxFlex.xs="90%"
+            fxLayoutAlign="center"
+            fxLayout.lt-sm="column">
             <button type="submit" mat-button color="primary">Bio</button>
+            <mat-form-field>
+                <mat-select placeholder="Options">
+                  <mat-option value="contact">
+                    Contact
+                  </mat-option>
+                  <mat-option value="view-vote-history">
+                      View Vote History
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
           </mat-card-actions>
-          <mat-form-field>
-            <mat-select placeholder="Options">
-              <mat-option value="contact">
-                Contact
-              </mat-option>
-              <mat-option value="view-vote-history">
-                  View Vote History
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
         </mat-card-footer>
       </mat-card>
     </section>
