@@ -12,6 +12,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RepresentativeComponent } from './representative/representative.component';
 import { MyRepresentativesComponent } from './representative/my-representatives/my-representatives.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
     LoginComponent,
     RepresentativeComponent,
     MyRepresentativesComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    HeaderComponent,
+    SidenavListComponent
   ],
   imports: [
     BrowserModule,
