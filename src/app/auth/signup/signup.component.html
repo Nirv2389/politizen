@@ -27,7 +27,11 @@
         <mat-error>Password must have at least 8 characters.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="Your Birthdate" [matDatepicker]="picker">
+      <input
+        matInput
+        placeholder="Your Birthdate"
+        [matDatepicker]="picker"
+        [max]="maxDate">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
