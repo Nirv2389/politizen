@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 
 import { Representative } from './representative.model';
 import { RepresentativeService } from './representative.service';
+import { UIService } from '../shared/ui.service';
 
 @Component({
   selector: 'app-representative',
@@ -11,12 +12,18 @@ import { RepresentativeService } from './representative.service';
 })
 export class RepresentativeComponent implements OnInit, OnDestroy {
   representatives: Representative[];
-  representativeSubscription: Subscription;
+  private representativeSubscription: Subscription;
+  isLoading = true;
+  private loadingSubs: Subscription;
 
   constructor(
-    private representativeService: RepresentativeService) { }
+    private representativeService: RepresentativeService, private uiService: UIService) { }
 
   ngOnInit() {
+    this.loadingSubs = this.uiService.loadingStateChanged.subscribe(
+      isLoading => {
+        this.isLoading = isLoading;
+    });
     this.representativeSubscription = this.representativeService
       .representativesChanged.subscribe(
         representatives => (this.representatives = representatives)
@@ -25,7 +32,15 @@ export class RepresentativeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.representativeSubscription.unsubscribe();
+    if (this.representativeSubscription) {
+      this.representativeSubscription.unsubscribe();
+    }
+    if (this.loadingSubs) {
+      this.loadingSubs.unsubscribe();
+    }
   }
+
+
+
 }
 

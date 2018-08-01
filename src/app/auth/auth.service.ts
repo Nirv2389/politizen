@@ -5,6 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { AuthData } from './auth-data.model';
 import { RepresentativeService } from '../representative/representative.service';
+import { UIService } from '../shared/ui.service';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +15,8 @@ export class AuthService {
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    private representativeService: RepresentativeService
+    private representativeService: RepresentativeService,
+    private uiService: UIService
   ) {}
 
   initAuthListener() {
@@ -37,7 +39,7 @@ export class AuthService {
       authData.email,
       authData.password
     ).catch(error => {
-      console.log(error);
+      this.uiService.showSnackbar(error.message, null, 3000);
     });
   }
 
@@ -46,7 +48,7 @@ export class AuthService {
       authData.email,
       authData.password
     ).catch(error => {
-      console.log(error);
+      this.uiService.showSnackbar(error.message, null, 3000);
     });
   }
 
