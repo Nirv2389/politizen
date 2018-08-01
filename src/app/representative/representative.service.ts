@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 import { Representative } from './representative.model';
 
@@ -9,11 +9,12 @@ import { Representative } from './representative.model';
 export class RepresentativeService {
   representativesChanged = new Subject<Representative[]>();
   private currentRepresentatives: Representative[] = [];
+  private fbsubs: Subscription[];
 
   constructor(private database: AngularFirestore) {}
 
   fetchCurrentRepresentatives() {
-    this.database
+    this.fbsubs.push(this.database
       .collection('representatives')
       .snapshotChanges()
       .pipe(
@@ -26,6 +27,10 @@ export class RepresentativeService {
       .subscribe((representatives: Representative[]) => {
         this.currentRepresentatives = representatives;
         this.representativesChanged.next([...this.currentRepresentatives]);
-      });
+      }));
+  }
+
+  cancelSubscriptions() {
+    this.fbsubs.forEach(sub => sub.unsubscribe());
   }
 }
