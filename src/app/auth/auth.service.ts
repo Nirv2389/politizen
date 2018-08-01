@@ -6,6 +6,7 @@ import { MatSnackBar } from '../../../node_modules/@angular/material';
 
 import { AuthData } from './auth-data.model';
 import { RepresentativeService } from '../representative/representative.service';
+import { UIService } from '../shared/ui.service';
 
 @Injectable()
 export class AuthService {
@@ -16,7 +17,7 @@ export class AuthService {
     private router: Router,
     private afAuth: AngularFireAuth,
     private representativeService: RepresentativeService,
-    private snackbar: MatSnackBar
+    private uiService: UIService
   ) {}
 
   initAuthListener() {
@@ -39,9 +40,7 @@ export class AuthService {
       authData.email,
       authData.password
     ).catch(error => {
-      this.snackbar.open(error.message, null, {
-        duration: 3000
-      });
+      this.uiService.showSnackbar(error.message, null, 3000);
     });
   }
 
@@ -50,9 +49,7 @@ export class AuthService {
       authData.email,
       authData.password
     ).catch(error => {
-      this.snackbar.open(error.message, null, {
-        duration: 3000
-      });
+      this.uiService.showSnackbar(error.message, null, 3000);
     });
   }
 
