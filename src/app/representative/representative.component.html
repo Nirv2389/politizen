@@ -3,31 +3,33 @@
     <app-my-representatives></app-my-representatives>
   </mat-tab>
   <mat-tab label="All Representatives">
-    <section class="representative" fxLayout fxLayoutAlign="center">
-      <mat-card fxFlex.xs="70%" fxFlex="400px">
+    <section class="representative"
+      fxLayout="row"
+      fxLayoutAlign="center"
+      fxLayoutGap="20px"
+      fxLayout.lt-sm="column">
+      <mat-card *ngFor="let member of representatives"
+        fxFlex="shrink">
         <img mat-card-image
-          src="https://material.angular.io/assets/img/examples/shiba2.jpg"
-          alt="Photo of a Shiba Inu">
-          <mat-card-content >
-            <p>Shiba Hiroue Inu</p>
-            <p>Senator</p>
-          </mat-card-content>
-        <mat-card-footer fxLayout fxLayoutAlign="center">
-          <mat-card-actions
-            fxFlex.xs="90%"
-            fxLayoutAlign="center"
-            fxLayout.lt-sm="column">
+          src="{{member.image}}"
+          alt="Photo of a representative">
+        <mat-card-content>
+          <p>{{member.name}}</p>
+          <p>{{member.title}}</p>
+        </mat-card-content>
+        <mat-card-footer>
+          <mat-card-actions>
             <button type="submit" mat-button color="primary">Bio</button>
             <mat-form-field>
-                <mat-select placeholder="Options">
-                  <mat-option value="contact">
-                    Contact
-                  </mat-option>
-                  <mat-option value="view-vote-history">
-                      View Vote History
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+              <mat-select placeholder="Options">
+                <mat-option value="contact">
+                  Contact
+                </mat-option>
+                <mat-option value="view-vote-history">
+                  View Vote History
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </mat-card-actions>
         </mat-card-footer>
       </mat-card>

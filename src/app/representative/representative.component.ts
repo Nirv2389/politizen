@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RepresentativeService } from './representative.service';
+import { Representative } from './representative.model';
 
 @Component({
   selector: 'app-representative',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./representative.component.css']
 })
 export class RepresentativeComponent implements OnInit {
+  representatives: Representative[] = [];
 
-  constructor() { }
+  constructor(private representativeService: RepresentativeService) { }
 
   ngOnInit() {
+    this.representatives = this.representativeService.getCurrentRepresentatives();
   }
 
 }

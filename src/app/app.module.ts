@@ -15,6 +15,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { AuthService } from './auth/auth.service';
+import { RepresentativeService } from './representative/representative.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { AuthService } from './auth/auth.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, RepresentativeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
