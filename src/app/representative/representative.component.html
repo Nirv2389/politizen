@@ -9,7 +9,7 @@
       fxLayoutGap="20px"
       fxLayout.lt-sm="column">
       <mat-card *ngFor="let member of representatives"
-      fxFlex="shrink">
+        fxFlex="shrink">
         <img mat-card-image
           src="{{member.image}}"
           alt="Photo of a representative">
@@ -21,15 +21,15 @@
           <mat-card-actions>
             <button type="submit" mat-button color="primary">Bio</button>
             <mat-form-field>
-                <mat-select placeholder="Options">
-                  <mat-option value="contact">
-                    Contact
-                  </mat-option>
-                  <mat-option value="view-vote-history">
-                    View Vote History
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
+              <mat-select placeholder="Options">
+                <mat-option value="contact">
+                  Contact
+                </mat-option>
+                <mat-option value="view-vote-history">
+                  View Vote History
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
           </mat-card-actions>
         </mat-card-footer>
       </mat-card>
