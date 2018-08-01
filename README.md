@@ -30,6 +30,10 @@ For information on the Material Icons, please visit the [Material Icons](https:/
 
 Grids are not a part of the Angular Material package, so [Angular Flex-Layout](https://github.com/angular/flex-layout) is used. API documentation can be found there. This package uses CSS FlexBox behind the scenes to allow one to position components and elements with some directives, found in their Static and Responsive APIs.
 
+## Backend
+
+This application utilizes [Angularfire](https://github.com/angular/angularfire2/blob/master/docs/firestore/collections.md) to manage the backend. The backend is [Firebase](https://firebase.google.com/docs/web/setup). which can be managed via the Firebase console.
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
