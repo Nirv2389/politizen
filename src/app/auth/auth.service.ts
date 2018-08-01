@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { MatSnackBar } from '../../../node_modules/@angular/material';
 
 import { AuthData } from './auth-data.model';
 import { RepresentativeService } from '../representative/representative.service';
@@ -14,7 +15,8 @@ export class AuthService {
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    private representativeService: RepresentativeService
+    private representativeService: RepresentativeService,
+    private snackbar: MatSnackBar
   ) {}
 
   initAuthListener() {
@@ -37,7 +39,9 @@ export class AuthService {
       authData.email,
       authData.password
     ).catch(error => {
-      console.log(error);
+      this.snackbar.open(error.message, null, {
+        duration: 3000
+      });
     });
   }
 
@@ -46,7 +50,9 @@ export class AuthService {
       authData.email,
       authData.password
     ).catch(error => {
-      console.log(error);
+      this.snackbar.open(error.message, null, {
+        duration: 3000
+      });
     });
   }
 
