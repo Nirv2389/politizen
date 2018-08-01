@@ -12,16 +12,17 @@ import { UIService } from '../shared/ui.service';
 })
 export class RepresentativeComponent implements OnInit, OnDestroy {
   representatives: Representative[];
-  representativeSubscription: Subscription;
-  isLoading = false;
+  private representativeSubscription: Subscription;
+  isLoading = true;
   private loadingSubs: Subscription;
 
   constructor(
     private representativeService: RepresentativeService, private uiService: UIService) { }
 
   ngOnInit() {
-    this.loadingSubs = this.uiService.loadingStateChanged.subscribe(isLoading => {
-      this.isLoading = isLoading;
+    this.loadingSubs = this.uiService.loadingStateChanged.subscribe(
+      isLoading => {
+        this.isLoading = isLoading;
     });
     this.representativeSubscription = this.representativeService
       .representativesChanged.subscribe(

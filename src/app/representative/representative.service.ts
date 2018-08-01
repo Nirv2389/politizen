@@ -27,10 +27,10 @@ export class RepresentativeService {
         }))
       )
       .subscribe((representatives: Representative[]) => {
+        this.uiService.loadingStateChanged.next(false);
         this.currentRepresentatives = representatives;
         this.representativesChanged.next([...this.currentRepresentatives]);
       }));
-      this.uiService.loadingStateChanged.next(false);
   }
 
   cancelSubscriptions() {
