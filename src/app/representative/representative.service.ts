@@ -3,7 +3,6 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
-
 import { Representative } from './representative.model';
 
 @Injectable()
