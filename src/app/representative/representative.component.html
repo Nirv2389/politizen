@@ -4,7 +4,7 @@
   </mat-tab>
   <mat-tab label="All Representatives" >
     <mat-spinner *ngIf="isLoading" color="accent"></mat-spinner>
-    <section *ngIf="!isLoading"
+    <section *ngIf="!isLoading && representatives"
       class="representative"
       fxLayout="row"
       fxLayoutAlign="center"

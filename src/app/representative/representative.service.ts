@@ -30,6 +30,11 @@ export class RepresentativeService {
         this.uiService.loadingStateChanged.next(false);
         this.currentRepresentatives = representatives;
         this.representativesChanged.next([...this.currentRepresentatives]);
+      }, error => {
+        this.uiService.loadingStateChanged.next(false);
+        this.uiService.showSnackbar(
+          'Fetching Representatives failed, please try again.', null, 3000);
+        this.representativesChanged.next(null);
       }));
   }
 
