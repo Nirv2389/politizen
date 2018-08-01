@@ -32,8 +32,15 @@ export class RepresentativeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.loadingSubs.unsubscribe();
-    this.representativeSubscription.unsubscribe();
+    if (this.representativeSubscription) {
+      this.representativeSubscription.unsubscribe();
+    }
+    if (this.loadingSubs) {
+      this.loadingSubs.unsubscribe();
+    }
   }
+
+
+
 }
 
