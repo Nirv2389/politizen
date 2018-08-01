@@ -9,7 +9,7 @@ import { Representative } from './representative.model';
 export class RepresentativeService {
   representativesChanged = new Subject<Representative[]>();
   private currentRepresentatives: Representative[] = [];
-  private fbsubs: Subscription[];
+  private fbsubs: Subscription[] = [];
 
   constructor(private database: AngularFirestore) {}
 
