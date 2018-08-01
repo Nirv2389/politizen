@@ -1,28 +1,32 @@
+import { Injectable } from '@angular/core';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+
+
 import { Representative } from './representative.model';
 
-
+@Injectable()
 export class RepresentativeService {
-  private currentRepresentatives: Representative[] = [
-    {
-      id: 'shiba',
-      name: 'Shiba Hiroue Inu',
-      terms: 2,
-      location: 'IN',
-      image: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
-      title: 'Congressman'
-    },
-    {
-      id: 'knope',
-      name: 'Leslie Knope',
-      terms: 20,
-      location: 'IN',
-      image: 'https://i.imgur.com/VouzssQ.png',
-      title: 'Senator'
-    }
-  ];
+  representativesChanged = new Subject<Representative[]>();
+  private currentRepresentatives: Representative[] = [];
 
+  constructor(private database: AngularFirestore) {}
 
-  getCurrentRepresentatives() {
-    return this.currentRepresentatives.slice();
+  fetchCurrentRepresentatives() {
+    this.database
+      .collection('representatives')
+      .snapshotChanges()
+      .pipe(
+        map(docArray => docArray.map(d => {
+          const data = d.payload.doc.data() as Representative;
+          const id = d.payload.doc.id;
+          return { id, ...data };
+        }))
+      )
+      .subscribe((representatives: Representative[]) => {
+        this.currentRepresentatives = representatives;
+        this.representativesChanged.next([...this.currentRepresentatives]);
+      });
   }
 }
