@@ -2,8 +2,10 @@
   <mat-tab label="Your Representatives">
     <app-my-representatives></app-my-representatives>
   </mat-tab>
-  <mat-tab label="All Representatives">
-    <section class="representative"
+  <mat-tab label="All Representatives" >
+    <mat-spinner *ngIf="isLoading" color="accent"></mat-spinner>
+    <section *ngIf="!isLoading"
+      class="representative"
       fxLayout="row"
       fxLayoutAlign="center"
       fxLayoutGap="20px"

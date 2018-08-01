@@ -20,6 +20,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { AuthService } from './auth/auth.service';
 import { RepresentativeService } from './representative/representative.service';
 import { environment } from '../environments/environment';
+import { UIService } from './shared/ui.service';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { environment } from '../environments/environment';
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService, RepresentativeService],
+  providers: [AuthService, RepresentativeService, UIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

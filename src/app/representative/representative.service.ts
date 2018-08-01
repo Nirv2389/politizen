@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
 
 import { Representative } from './representative.model';
+import { UIService } from '../shared/ui.service';
 
 @Injectable()
 export class RepresentativeService {
@@ -11,9 +12,10 @@ export class RepresentativeService {
   private currentRepresentatives: Representative[] = [];
   private fbsubs: Subscription[] = [];
 
-  constructor(private database: AngularFirestore) {}
+  constructor(private database: AngularFirestore, private uiService: UIService) {}
 
   fetchCurrentRepresentatives() {
+    this.uiService.loadingStateChanged.next(true);
     this.fbsubs.push(this.database
       .collection('representatives')
       .snapshotChanges()
@@ -28,6 +30,7 @@ export class RepresentativeService {
         this.currentRepresentatives = representatives;
         this.representativesChanged.next([...this.currentRepresentatives]);
       }));
+      this.uiService.loadingStateChanged.next(false);
   }
 
   cancelSubscriptions() {
