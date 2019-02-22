@@ -34,7 +34,7 @@ Grids are not a part of the Angular Material package, so [Angular Flex-Layout](h
 
 ## Backend
 
-This application utilizes [Angularfire](https://github.com/angular/angularfire2/blob/master/docs/firestore/collections.md) to manage the backend. The backend is [Firebase](https://firebase.google.com/docs/web/setup). which can be managed via the Firebase console.
+This application utilizes [Angularfire](https://github.com/angular/angularfire2/blob/master/docs/firestore/collections.md) to manage the backend. The backend is [Firebase](https://firebase.google.com/docs/web/setup), which can be managed via the Firebase console.
 
 ## Further help
 
